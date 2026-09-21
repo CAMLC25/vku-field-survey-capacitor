@@ -318,10 +318,10 @@ zipalign -v 4 app-release-unsigned.apk vku-field-survey-release.apk
 
 | STT | Hạng Mục Bàn Giao (Deliverable) | Đường Dẫn / Minh Chứng Bàn Giao | Trạng Thái |
 |:---:|---|---|:---:|
-| **1** | **🌐 Đường dẫn Live Demo (Cloudflare Pages HTTPS)** | [https://camle-vku-field-survey.pages.dev](https://camle-vku-field-survey.pages.dev)<br/>API: [https://camle-vku-field-survey.lecam.workers.dev](https://camle-vku-field-survey.lecam.workers.dev) | ✅ Đã Triển Khai |
-| **2** | **💻 Kho Mã Nguồn Công Khai (GitHub Repository)** | [https://github.com/CAMLC25/vku-field-survey-capacitor](https://github.com/CAMLC25/vku-field-survey-capacitor) *(Kèm cấu hình `capacitor.config.ts` và thư mục `android/`)* | ✅ Đã Cấu Hình & Sẵn Sàng |
-| **3** | **📦 Tệp Cài Đặt Android APK Độc Lập** | `vku-field-survey-debug.apk` (~6.7 MB — Cài đặt trực tiếp trên điện thoại Android) | ✅ Hoàn Thành |
-| **4** | **📄 Báo Cáo Kỹ Thuật Đầy Đủ (Technical Report)** | Tệp `TECHNICAL_REPORT.md` (và phiên bản xuất PDF) bao gồm trọn vẹn 7 chuyên đề | ✅ Hoàn Thành |
+| **1** | **🌐 Đường dẫn Live Demo (Cloudflare Pages HTTPS)** | • Chính: [https://vku-field-survey-capacitor.pages.dev](https://vku-field-survey-capacitor.pages.dev)<br/>• Dự phòng: [https://camle-vku-field-survey.pages.dev](https://camle-vku-field-survey.pages.dev)<br/>• Edge API: [https://vku-field-survey-capacitor.lecam.workers.dev](https://vku-field-survey-capacitor.lecam.workers.dev) | ✅ Đã Triển Khai |
+| **2** | **💻 Kho Mã Nguồn Công Khai (GitHub Repository)** | [https://github.com/CAMLC25/vku-field-survey-capacitor](https://github.com/CAMLC25/vku-field-survey-capacitor) *(Kèm cấu hình `capacitor.config.ts`, `android/` và toàn bộ lịch sử commit)* | ✅ Đã Cấu Hình & Sẵn Sàng |
+| **3** | **📦 Tệp Cài Đặt Android APK Độc Lập** | `vku-field-survey-debug.apk` (~7.4 MB — Đóng gói Capacitor 7, chạy mượt mà trên Android 8.0 - 15) | ✅ Hoàn Thành |
+| **4** | **📄 Báo Cáo Kỹ Thuật Đầy Đủ (Technical Report)** | • Bản Microsoft Word: [`TECHNICAL_REPORT.docx`](./TECHNICAL_REPORT.docx)<br/>• Bản in ấn PDF: [`TECHNICAL_REPORT.pdf`](./TECHNICAL_REPORT.pdf)<br/>• Bản Markdown: [`TECHNICAL_REPORT.md`](./TECHNICAL_REPORT.md) | ✅ Hoàn Thành |
 
 ### 7.2. Bảng Tự Đánh Giá Đáp Ứng Yêu Cầu Kỹ Thuật
 
