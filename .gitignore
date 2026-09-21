@@ -37,3 +37,8 @@ android/local.properties
 android/captures/
 .externalNativeBuild/
 .cxx/
+
+# Temporary & Office lock files
+*.tmp
+~$*
+
