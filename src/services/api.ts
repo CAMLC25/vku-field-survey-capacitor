@@ -63,6 +63,10 @@ export async function uploadSurvey(survey: Survey): Promise<UploadSurveyResponse
   formData.append('createdByEmail', survey.createdByEmail || '');
   formData.append('createdAt', survey.createdAt);
   formData.append('updatedAt', survey.updatedAt);
+  if (typeof survey.latitude === 'number') formData.append('latitude', String(survey.latitude));
+  if (typeof survey.longitude === 'number') formData.append('longitude', String(survey.longitude));
+  if (typeof survey.accuracy === 'number') formData.append('accuracy', String(survey.accuracy));
+  if (survey.locationAddress) formData.append('locationAddress', survey.locationAddress);
 
   // 1. Resolve photo: if Blob is missing or 0 bytes (WebKit bug), reconstruct from photoUrl
   let photoToUpload: Blob | null = survey.photo;

@@ -26,6 +26,7 @@ import {
 import { ConfirmDialog } from './ConfirmDialog';
 import { useToast } from '../context/ToastContext';
 import { authService } from '../services/authService';
+import { resolveSurveyCoordinates } from '../utils/location';
 
 export const SurveyList: React.FC = () => {
   const [filterStatus, setFilterStatus] = useState<string>('ALL');
@@ -383,21 +384,26 @@ const SurveyCard: React.FC<SurveyCardProps> = ({
       </div>
 
       {/* GPS Location Coordinates Link */}
-      {survey.latitude && survey.longitude && (
-        <div className="mt-2 flex items-center gap-1.5">
-          <a
-            href={`https://www.google.com/maps/search/?api=1&query=${survey.latitude},${survey.longitude}`}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded-md transition-colors"
-            title={language === 'vi' ? 'Mở tọa độ trên Google Maps' : 'Open in Google Maps'}
-          >
-            <MapPin className="w-3 h-3 text-emerald-600 shrink-0" />
-            <span>{survey.latitude.toFixed(5)}°, {survey.longitude.toFixed(5)}°</span>
-            {survey.accuracy && <span className="text-[10px] text-emerald-600">(±{survey.accuracy}m)</span>}
-          </a>
-        </div>
-      )}
+      {(() => {
+        const coords = resolveSurveyCoordinates(survey);
+        return (
+          <div className="mt-2 flex items-center gap-1.5 flex-wrap">
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${coords.lat},${coords.lng}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-800 bg-emerald-50/90 hover:bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded-lg transition-all active:scale-95 shadow-2xs"
+              title={language === 'vi' ? 'Xem vị trí kiểm định trên Google Maps' : 'View coordinates on Google Maps'}
+            >
+              <MapPin className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+              <span className="font-bold">{coords.lat.toFixed(5)}° N, {coords.lng.toFixed(5)}° E</span>
+              <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-200/80 text-emerald-900 font-sans font-bold">
+                {coords.isRealtime ? (language === 'vi' ? 'GPS Trực tiếp' : 'Live GPS') : (language === 'vi' ? 'Khuôn viên VKU' : 'VKU Campus')}
+              </span>
+            </a>
+          </div>
+        );
+      })()}
 
       {/* Defect notes */}
       {survey.defectNotes && (

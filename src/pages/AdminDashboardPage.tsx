@@ -15,10 +15,12 @@ import {
   Smartphone,
   Plus,
   X,
-  Users
+  Users,
+  MapPin
 } from 'lucide-react';
 import { authService } from '../services/authService';
 import { getApiBaseUrl } from '../config/apiConfig';
+import { resolveSurveyCoordinates } from '../utils/location';
 import type { User, UserRole } from '../types/user';
 
 interface SurveyItem {
@@ -34,6 +36,10 @@ interface SurveyItem {
   photoUrl?: string | null;
   createdAt: string;
   serverSyncedAt?: string;
+  latitude?: number;
+  longitude?: number;
+  accuracy?: number;
+  locationAddress?: string;
 }
 
 interface AdminDashboardPageProps {
@@ -194,25 +200,32 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
       'Phòng',
       'Hạng Mục',
       'Mức Độ Tình Trạng (1-5)',
+      'Tọa Độ GPS (Vĩ Độ - Kinh Độ)',
+      'Mô Tả Vị Trí / Địa Chỉ',
       'Mô Tả Sự Cố / Hư Hỏng',
       'Cán Bộ Kiểm Định',
       'Mã Cán Bộ',
       'Thời Gian Khảo Sát',
       'Có Ảnh Chụp'
     ];
-    const rows = surveys.map((s) => [
-      s.id,
-      `"${s.building || ''}"`,
-      `"${s.floor || ''}"`,
-      `"${s.room || ''}"`,
-      `"${s.category || ''}"`,
-      s.condition,
-      `"${(s.defectNotes || '').replace(/"/g, '""')}"`,
-      `"${s.inspectorName || ''}"`,
-      `"${s.inspectorId || ''}"`,
-      `"${new Date(s.createdAt).toLocaleString('vi-VN')}"`,
-      s.photoUrl ? 'Có' : 'Không'
-    ]);
+    const rows = surveys.map((s) => {
+      const coords = resolveSurveyCoordinates(s);
+      return [
+        s.id,
+        `"${s.building || ''}"`,
+        `"${s.floor || ''}"`,
+        `"${s.room || ''}"`,
+        `"${s.category || ''}"`,
+        s.condition,
+        `"${coords.lat.toFixed(5)}, ${coords.lng.toFixed(5)}"`,
+        `"${coords.label}"`,
+        `"${(s.defectNotes || '').replace(/"/g, '""')}"`,
+        `"${s.inspectorName || ''}"`,
+        `"${s.inspectorId || ''}"`,
+        `"${new Date(s.createdAt).toLocaleString('vi-VN')}"`,
+        s.photoUrl ? 'Có' : 'Không'
+      ];
+    });
     const csvContent = '\uFEFF' + [headers.join(','), ...rows.map((r) => r.join(','))].join('\r\n');
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
@@ -502,7 +515,25 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                           </td>
                           <td className="py-2.5 px-4">
                             <div className="font-bold text-slate-900">{s.building}</div>
-                            <div className="text-[11px] text-slate-500">{s.floor} • Phòng {s.room}</div>
+                            <div className="text-[11px] text-slate-500 font-medium">{s.floor} • Phòng {s.room}</div>
+                            {(() => {
+                              const coords = resolveSurveyCoordinates(s);
+                              return (
+                                <a
+                                  href={`https://www.google.com/maps/search/?api=1&query=${coords.lat},${coords.lng}`}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="mt-1 inline-flex items-center gap-1 text-[10px] font-mono text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-1.5 py-0.5 rounded transition-colors"
+                                  title="Xem vị trí trên Google Maps"
+                                >
+                                  <MapPin className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
+                                  <span>{coords.lat.toFixed(4)}, {coords.lng.toFixed(4)}</span>
+                                  <span className="text-[8px] font-sans font-bold text-emerald-700 bg-emerald-200/70 px-1 rounded">
+                                    {coords.isRealtime ? 'GPS' : 'VKU'}
+                                  </span>
+                                </a>
+                              );
+                            })()}
                           </td>
                           <td className="py-2.5 px-4 font-medium text-slate-700">
                             {s.category}

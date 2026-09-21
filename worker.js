@@ -135,6 +135,10 @@ export default {
                     inspectorId: String(item.inspectorId || ''),
                     createdByEmail: String(item.createdByEmail || ''),
                     photoUrl: item.photoUrl || null,
+                    latitude: typeof item.latitude === 'number' ? item.latitude : undefined,
+                    longitude: typeof item.longitude === 'number' ? item.longitude : undefined,
+                    accuracy: typeof item.accuracy === 'number' ? item.accuracy : undefined,
+                    locationAddress: item.locationAddress ? String(item.locationAddress) : undefined,
                     createdAt: String(item.createdAt || new Date().toISOString()),
                     serverSyncedAt: new Date().toISOString()
                   };
@@ -184,6 +188,10 @@ export default {
             const inspectorId = formData.get('inspectorId') || '';
             const createdByEmail = formData.get('createdByEmail') || '';
             const createdAt = formData.get('createdAt') || new Date().toISOString();
+            const latitude = formData.get('latitude') ? Number(formData.get('latitude')) : undefined;
+            const longitude = formData.get('longitude') ? Number(formData.get('longitude')) : undefined;
+            const accuracy = formData.get('accuracy') ? Number(formData.get('accuracy')) : undefined;
+            const locationAddress = formData.get('locationAddress') ? String(formData.get('locationAddress')) : undefined;
 
             // 1. Direct photoUrl from client (pre-compressed base64, 0ms server CPU)
             const clientPhotoUrl = formData.get('photoUrl');
@@ -221,6 +229,10 @@ export default {
               inspectorId: String(inspectorId),
               createdByEmail: String(createdByEmail),
               photoUrl,
+              latitude,
+              longitude,
+              accuracy,
+              locationAddress,
               createdAt: String(createdAt),
               serverSyncedAt: new Date().toISOString()
             };
