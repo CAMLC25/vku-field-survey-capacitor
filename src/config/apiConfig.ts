@@ -1,5 +1,5 @@
 // Cloudflare backend endpoint for central persistence and synchronization
-export const CLOUDFLARE_BACKEND_URL = 'https://camle-vku-field-survey.lecam.workers.dev';
+export const CLOUDFLARE_BACKEND_URL = 'https://vku-field-survey-capacitor.lecam.workers.dev';
 
 /**
  * Resolves the appropriate API base URL depending on execution runtime:
