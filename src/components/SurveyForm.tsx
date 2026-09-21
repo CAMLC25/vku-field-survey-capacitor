@@ -428,10 +428,15 @@ export const SurveyForm: React.FC<SurveyFormProps> = ({ onSuccess }) => {
               </span>
             </div>
             {location ? (
-              <p className="text-xs font-mono font-bold text-slate-800">
-                {location.latitude.toFixed(5)}° N, {location.longitude.toFixed(5)}° E
-                <span className="text-[10px] font-normal text-slate-500 ml-1.5">(±{location.accuracy}m)</span>
-              </p>
+              <div className="space-y-0.5">
+                <p className="text-xs font-mono font-bold text-slate-800">
+                  {location.latitude.toFixed(5)}° N, {location.longitude.toFixed(5)}° E
+                  <span className="text-[10px] font-normal text-slate-500 ml-1.5">(±{location.accuracy}m)</span>
+                </p>
+                <p className="text-[11px] text-emerald-800 font-medium line-clamp-1" title="Trường ĐH CNTT&TT Việt - Hàn, 470 Trần Đại Nghĩa, Q. Ngũ Hành Sơn, TP. Đà Nẵng">
+                  📍 Trường ĐH CNTT&TT Việt - Hàn, 470 Trần Đại Nghĩa, Đà Nẵng
+                </p>
+              </div>
             ) : (
               <p className="text-xs text-slate-500 italic">
                 {isLocating

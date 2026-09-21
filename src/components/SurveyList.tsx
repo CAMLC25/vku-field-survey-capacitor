@@ -383,24 +383,39 @@ const SurveyCard: React.FC<SurveyCardProps> = ({
         </div>
       </div>
 
-      {/* GPS Location Coordinates Link */}
+      {/* GPS Location & Address Card */}
       {(() => {
         const coords = resolveSurveyCoordinates(survey);
         return (
-          <div className="mt-2 flex items-center gap-1.5 flex-wrap">
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${coords.lat},${coords.lng}`}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-800 bg-emerald-50/90 hover:bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded-lg transition-all active:scale-95 shadow-2xs"
-              title={language === 'vi' ? 'Xem vị trí kiểm định trên Google Maps' : 'View coordinates on Google Maps'}
-            >
-              <MapPin className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-              <span className="font-bold">{coords.lat.toFixed(5)}° N, {coords.lng.toFixed(5)}° E</span>
-              <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-200/80 text-emerald-900 font-sans font-bold">
-                {coords.isRealtime ? (language === 'vi' ? 'GPS Trực tiếp' : 'Live GPS') : (language === 'vi' ? 'Khuôn viên VKU' : 'VKU Campus')}
+          <div className="mt-2.5 p-2 rounded-xl bg-emerald-50/70 border border-emerald-200/80 text-emerald-950 text-xs">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <div className="flex items-center gap-1.5 min-w-0">
+                <MapPin className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <span className="font-bold text-[11px] text-emerald-900 truncate">
+                  {language === 'vi' ? 'Địa chỉ GPS:' : 'GPS Address:'}
+                </span>
+                <span className="text-[11px] text-slate-700 font-medium truncate" title={coords.address}>
+                  {coords.address}
+                </span>
+              </div>
+              <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-200 text-emerald-900 font-bold shrink-0">
+                {coords.isRealtime ? (language === 'vi' ? '🛰️ GPS Trực tiếp' : '🛰️ Live GPS') : (language === 'vi' ? '🏛️ Khuôn viên VKU' : '🏛️ VKU Campus')}
               </span>
-            </a>
+            </div>
+
+            <div className="mt-1.5 flex items-center justify-between gap-2 pt-1 border-t border-emerald-200/50">
+              <span className="font-mono text-[10px] text-slate-600">
+                {coords.lat.toFixed(5)}° N, {coords.lng.toFixed(5)}° E {coords.accuracy ? `(±${coords.accuracy}m)` : ''}
+              </span>
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${coords.lat},${coords.lng}`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 hover:text-emerald-900 hover:underline shrink-0"
+              >
+                <span>{language === 'vi' ? 'Mở Google Maps ↗' : 'Open Maps ↗'}</span>
+              </a>
+            </div>
           </div>
         );
       })()}

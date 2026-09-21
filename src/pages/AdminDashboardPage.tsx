@@ -513,25 +513,30 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                               </div>
                             )}
                           </td>
-                          <td className="py-2.5 px-4">
+                          <td className="py-2.5 px-4 max-w-xs">
                             <div className="font-bold text-slate-900">{s.building}</div>
                             <div className="text-[11px] text-slate-500 font-medium">{s.floor} • Phòng {s.room}</div>
                             {(() => {
                               const coords = resolveSurveyCoordinates(s);
                               return (
-                                <a
-                                  href={`https://www.google.com/maps/search/?api=1&query=${coords.lat},${coords.lng}`}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  className="mt-1 inline-flex items-center gap-1 text-[10px] font-mono text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-1.5 py-0.5 rounded transition-colors"
-                                  title="Xem vị trí trên Google Maps"
-                                >
-                                  <MapPin className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
-                                  <span>{coords.lat.toFixed(4)}, {coords.lng.toFixed(4)}</span>
-                                  <span className="text-[8px] font-sans font-bold text-emerald-700 bg-emerald-200/70 px-1 rounded">
-                                    {coords.isRealtime ? 'GPS' : 'VKU'}
-                                  </span>
-                                </a>
+                                <div className="mt-1 space-y-1">
+                                  <div className="text-[10px] text-slate-600 truncate" title={coords.address}>
+                                    📍 {coords.address}
+                                  </div>
+                                  <a
+                                    href={`https://www.google.com/maps/search/?api=1&query=${coords.lat},${coords.lng}`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-1.5 py-0.5 rounded transition-colors"
+                                    title="Xem vị trí trên Google Maps"
+                                  >
+                                    <MapPin className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
+                                    <span>{coords.lat.toFixed(4)}, {coords.lng.toFixed(4)}</span>
+                                    <span className="text-[8px] font-sans font-bold text-emerald-700 bg-emerald-200/70 px-1 rounded">
+                                      {coords.isRealtime ? 'GPS Thực tế' : 'VKU Campus'}
+                                    </span>
+                                  </a>
+                                </div>
                               );
                             })()}
                           </td>
