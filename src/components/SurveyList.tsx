@@ -229,7 +229,7 @@ export const SurveyList: React.FC = () => {
       {/* Photo Modal */}
       {selectedPhoto && (
         <div
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn"
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4 p-safe animate-fadeIn"
           onClick={() => setSelectedPhoto(null)}
         >
           <div className="relative max-w-lg w-full bg-slate-900 rounded-2xl overflow-hidden p-2 shadow-2xl">

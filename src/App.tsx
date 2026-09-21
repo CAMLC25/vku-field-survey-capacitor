@@ -48,7 +48,7 @@ export function App() {
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
       {/* Admin Inspection Mode Ribbon: clearly notifies admin they are in mobile inspection simulation */}
       {currentUser.role === 'admin' && (
-        <div className="bg-slate-900 text-white px-4 py-2 text-xs flex items-center justify-between border-b border-slate-800 sticky top-0 z-40 shadow-xs">
+        <div className="bg-slate-900 text-white header-safe-top pb-2 text-xs flex items-center justify-between border-b border-slate-800 sticky top-0 z-40 shadow-xs">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="font-semibold text-slate-200">
@@ -75,14 +75,14 @@ export function App() {
       <ConnectivityBanner />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-xl w-full mx-auto p-4 pb-24">
+      <main className="flex-1 max-w-xl w-full mx-auto p-4 main-safe-bottom">
         {activeTab === 'home' && <HomePage onNavigate={setActiveTab} />}
         {activeTab === 'new-survey' && <SurveyPage onNavigate={setActiveTab} />}
         {activeTab === 'history' && <HistoryPage onNavigate={setActiveTab} />}
       </main>
 
       {/* Bottom Mobile Navigation Bar */}
-      <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 py-2 px-6 shadow-lg">
+      <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 nav-safe-bottom pt-2 shadow-lg">
         <div className="max-w-xl mx-auto flex items-center justify-around">
           <button
             type="button"

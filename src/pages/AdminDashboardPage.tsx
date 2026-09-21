@@ -242,7 +242,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
       {/* Top Navigation Bar */}
-      <header className="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-40">
+      <header className="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-40 header-safe-top pb-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center font-bold text-white text-base shadow-sm">
@@ -311,7 +311,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-safe space-y-6">
         
         {/* Navigation Tabs */}
         <div className="flex items-center justify-between border-b border-slate-200 pb-3">
