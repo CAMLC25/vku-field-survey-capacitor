@@ -46,14 +46,14 @@
 
   /* Safe Area Top Header (Bleeds behind notch/status bar while keeping content safe) */
   .header-safe-top {
-    padding-top: max(0.5rem, env(safe-area-inset-top, 0px));
+    padding-top: max(0.625rem, env(safe-area-inset-top, 0px));
     padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
     padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
   }
 
   /* Safe Area Bottom Bar (Bleeds to device edge while elevating buttons above home indicator) */
   .nav-safe-bottom {
-    padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
+    padding-bottom: max(0.625rem, env(safe-area-inset-bottom, 0px));
     padding-left: max(1rem, env(safe-area-inset-left, 0px));
     padding-right: max(1rem, env(safe-area-inset-right, 0px));
   }
@@ -61,6 +61,30 @@
   /* Main scroll area clearance to ensure last item is never covered by bottom nav bar */
   .main-safe-bottom {
     padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Standalone iOS Web Clip / PWA Safe Area Enhancement */
+.is-standalone .header-safe-top {
+  padding-top: max(1.25rem, env(safe-area-inset-top, 24px));
+}
+.is-standalone .nav-safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 20px));
+}
+.is-standalone .main-safe-bottom {
+  padding-bottom: calc(6rem + env(safe-area-inset-bottom, 20px));
+}
+
+@media (display-mode: standalone) {
+  .header-safe-top {
+    /* If env(safe-area-inset-top) reports 0 during cold start or iOS standalone glitch, enforce safe clearance */
+    padding-top: max(1.25rem, env(safe-area-inset-top, 24px));
+  }
+  .nav-safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom, 20px));
+  }
+  .main-safe-bottom {
+    padding-bottom: calc(6rem + env(safe-area-inset-bottom, 20px));
   }
 }
 
