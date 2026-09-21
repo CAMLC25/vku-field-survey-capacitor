@@ -13,7 +13,7 @@ An offline-first field survey mobile & web application designed specifically for
 ### 🌐 Live Production Deliverables
 - **Live Production PWA (Cloudflare Pages HTTPS):** [https://camle-vku-field-survey.pages.dev](https://camle-vku-field-survey.pages.dev)
 - **Central Cloud Edge API (Cloudflare Worker & KV):** [https://camle-vku-field-survey.lecam.workers.dev](https://camle-vku-field-survey.lecam.workers.dev)
-- **GitHub Repository (Public Source Code):** [https://github.com/CAMLC25/camle-vku-field-survey](https://github.com/CAMLC25/camle-vku-field-survey)
+- **GitHub Repository (Public Source Code):** [https://github.com/CAMLC25/vku-field-survey-capacitor](https://github.com/CAMLC25/vku-field-survey-capacitor)
 - **Pre-built Native Android APK:** [`vku-field-survey-debug.apk`](./vku-field-survey-debug.apk) *(6.7 MB — compiled with Gradle & Android Studio)*
 - **Technical Report (PDF):** [`TECHNICAL_REPORT.pdf`](./TECHNICAL_REPORT.pdf) *(Comprehensive Vietnamese technical report)*
 - **Lead Developer / Author:** **Lê Cảm** (Mã SV: **23IT022**) — **100% Solo Contribution**
@@ -239,8 +239,8 @@ Because iOS WebKit does not implement the Background Sync API:
 ### Installation & Execution
 ```bash
 # 1. Clone repository
-git clone https://github.com/CAMLC25/camle-vku-field-survey.git
-cd vku-field-survey
+git clone https://github.com/CAMLC25/vku-field-survey-capacitor.git
+cd vku-field-survey-capacitor
 
 # 2. Install dependencies
 npm install

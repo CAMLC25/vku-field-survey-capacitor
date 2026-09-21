@@ -319,7 +319,7 @@ zipalign -v 4 app-release-unsigned.apk vku-field-survey-release.apk
 | STT | Hạng Mục Bàn Giao (Deliverable) | Đường Dẫn / Minh Chứng Bàn Giao | Trạng Thái |
 |:---:|---|---|:---:|
 | **1** | **🌐 Đường dẫn Live Demo (Cloudflare Pages HTTPS)** | [https://camle-vku-field-survey.pages.dev](https://camle-vku-field-survey.pages.dev)<br/>API: [https://camle-vku-field-survey.lecam.workers.dev](https://camle-vku-field-survey.lecam.workers.dev) | ✅ Đã Triển Khai |
-| **2** | **💻 Kho Mã Nguồn Công Khai (GitHub Repository)** | Chứa đầy đủ mã nguồn PWA, cấu hình `capacitor.config.ts` và thư mục `android/` | ✅ Sẵn Sàng Đẩy |
+| **2** | **💻 Kho Mã Nguồn Công Khai (GitHub Repository)** | [https://github.com/CAMLC25/vku-field-survey-capacitor](https://github.com/CAMLC25/vku-field-survey-capacitor) *(Kèm cấu hình `capacitor.config.ts` và thư mục `android/`)* | ✅ Đã Cấu Hình & Sẵn Sàng |
 | **3** | **📦 Tệp Cài Đặt Android APK Độc Lập** | `vku-field-survey-debug.apk` (~6.7 MB — Cài đặt trực tiếp trên điện thoại Android) | ✅ Hoàn Thành |
 | **4** | **📄 Báo Cáo Kỹ Thuật Đầy Đủ (Technical Report)** | Tệp `TECHNICAL_REPORT.md` (và phiên bản xuất PDF) bao gồm trọn vẹn 7 chuyên đề | ✅ Hoàn Thành |
 
