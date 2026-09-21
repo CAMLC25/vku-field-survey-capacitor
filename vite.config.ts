@@ -86,6 +86,9 @@ export default defineConfig({
   ],
   server: {
     port: 5173,
+    watch: {
+      ignored: ['**/*.tmp', '**/*.docx', '**/*.pdf', '**/android/**', '**/~*']
+    },
     proxy: {
       '/api': {
         target: 'http://localhost:3001',
